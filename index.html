@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ذكريات السنيكرز</title>
+<style>
+body{
+background: linear-gradient(#fff8f0,#f0f0f0);
+color:#222;
+font-family: Arial, sans-serif;
+text-align:center;
+margin:0;
+padding:0;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* شاشة الباسورد */
+#login{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+#login input{
+padding:12px;
+font-size:18px;
+border-radius:10px;
+border:1px solid #ccc;
+margin-bottom:10px;
+width:220px;
+}
+#login button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:#8B4513;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+#login button:hover{
+background:#a0522d;
+}
+
+/* الصفحة الثانية */
+#main{
+display:none;
+flex-direction:column;
+align-items:center;
+}
+
+#snicker{
+width:400px; /* حجم أكبر */
+cursor:pointer;
+margin-bottom:30px;
+transition:0.3s;
+}
+#snicker:hover{
+transform:scale(1.1);
+}
+
+#text{
+font-size:22px;
+opacity:0;
+max-width:80%;
+line-height:1.5;
+white-space:pre-wrap;
+}
+</style>
+</head>
+<body>
+
+<div id="login">
+<h2>أدخل كلمة السر</h2>
+<input type="password" id="pass" placeholder="اكتب كلمة السر">
+<button onclick="check()">دخول</button>
+</div>
+
+<div id="main">
+<img id="snicker" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8qyVr_xjr9B5wr0nlArgSBkwpIFOTjhPGRA&s" onclick="showMessage()">
+<div id="text">
+يوم كنتِ تحبسيني في الدرج وتقولين: ما راح تطلع لين ما تجيب لي السنيكرز 😂
+</div>
+</div>
+
+<audio id="crack-sound" src="https://www.soundjay.com/button/sounds/button-16.mp3"></audio>
+
+<script>
+const password = "snickers";
+
+function check(){
+let input=document.getElementById("pass").value;
+if(input===password){
+document.getElementById("login").style.display="none";
+document.getElementById("main").style.display="flex";
+}else{
+alert("جيب سنيكرز أول 😂");
+}
+}
+
+function showMessage(){
+document.getElementById("crack-sound").play();
+let fullText = "يوم كنتِ تحبسيني في الدرج وتقولين: ما راح تطلع لين ما تجيب لي السنيكرز 😂";
+let container = document.getElementById("text");
+container.innerText = "";
+container.style.opacity="1";
+let i=0;
+let interval = setInterval(()=>{
+container.innerText += fullText[i];
+i++;
+if(i>=fullText.length) clearInterval(interval);
+},35);
+}
+</script>
+
+</body>
+</html>
+
